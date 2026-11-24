@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://azconsultants-ksa.pages.dev/sitemap.xml
