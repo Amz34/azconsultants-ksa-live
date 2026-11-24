@@ -47,7 +47,10 @@ export async function onRequestPost(context) {
     }
 
     // Telegram Bot Token (from Cloudflare Environment secret or default server token)
-    const botToken = env.TELEGRAM_BOT_TOKEN || '8863955799:AAGlPz1pnd4n00lB_xX2v3j_K-N_Bqf8s0E';
+    const botToken = env.TELEGRAM_BOT_TOKEN;
+    if (!botToken) {
+      return new Response(JSON.stringify({ ok: false, error: 'Missing TELEGRAM_BOT_TOKEN secret' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    }
     const chatId = env.TELEGRAM_CHAT_ID || '8843884232';
 
     // Structured HTML alert with escaping for Telegram
