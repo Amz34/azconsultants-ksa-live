@@ -14,3 +14,7 @@ Official static website & lead intake gateway for **AZ Consultants** (Riyadh, Ki
 - **Build output directory**: `/` *(root)*
 - **Root directory**: `/` *(root)*
 - **Functions directory**: `functions/` *(automatically detected by Cloudflare Pages)*
+
+---
+
+Part of [my always-on agent stack](https://github.com/Amz34) · [Awesome Agent Infrastructure](https://github.com/Amz34/awesome-agent-infrastructure) (135 live-checked building blocks).
