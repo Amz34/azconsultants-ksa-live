@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tender &amp; Advisory Intake | AZ Consultants (Saudi Arabia)</title>
+  <meta name="description" content="Direct mandate intake and Etimad tender fit assessment for contractors and engineering teams in Saudi Arabia.">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f5f0;
+      --card: #ffffff;
+      --ink: #12160f;
+      --ink-soft: #2c342b;
+      --muted: #5f6a60;
+      --line: #dddcd2;
+      --line-strong: #c6c5b8;
+      --green: #1d5c3f;
+      --green-dark: #123a28;
+      --green-tint: #eaf1ec;
+      --amber: #8a5a12;
+      --amber-tint: #f6efe0;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header.intake-head {
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 245, 240, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--muted);
+      border-left: 1px solid var(--line-strong);
+      padding-left: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-bar-bg {
+      width: 160px;
+      height: 6px;
+      background: var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--green);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    main.intake-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 820px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 56px 64px;
+      box-shadow: 0 8px 30px rgba(18, 22, 15, 0.05);
+      display: none;
+      animation: cardIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card.active { display: block; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Extra Large Typography */
+    .step-tag {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    p.lead-text {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 34px;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 28px;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid var(--line-strong);
+      padding: 16px 0;
+      margin-bottom: 32px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus { border-bottom-color: var(--green); }
+
+    .choices-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--paper);
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 18px;
+      color: var(--ink-soft);
+      font-weight: 600;
+      line-height: 1.4;
+      transition: all 0.15s ease;
+    }
+
+    .choice-btn:hover {
+      border-color: var(--green);
+      background: var(--green-tint);
+      color: var(--green-dark);
+      transform: translateX(6px);
+    }
+
+    .choice-btn .key-hint {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      line-height: 30px;
+      text-align: center;
+      background: #fff;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-right: 18px;
+      flex-shrink: 0;
+    }
+
+    .actions-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .btn-submit {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 18px 36px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--green-dark); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .error-msg {
+      color: #b91c1c;
+      font-size: 15px;
+      margin-top: -22px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      display: none;
+    }
+
+    /* Impressive Animated Checkmark Modal / Overlay */
+    #submissionOverlay {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .checkmark-svg {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 3.5;
+      stroke: var(--green);
+      stroke-miterlimit: 10;
+      margin: 0 auto 24px;
+    }
+
+    .checkmark-circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 3.5;
+      stroke-miterlimit: 10;
+      stroke: var(--green);
+      fill: var(--green-tint);
+      animation: strokeAnim 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark-check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      stroke-width: 4;
+      stroke: var(--green);
+      animation: strokeAnim 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+    }
+
+    @keyframes strokeAnim {
+      100% { stroke-dashoffset: 0; }
+    }
+
+    /* Scorecard Artifact Styling */
+    .scorecard-box {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 34px;
+      margin: 28px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scorecard-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--green), #8a5a12);
+    }
+
+    .score-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1.5px dashed var(--line);
+    }
+
+    .score-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--green-tint);
+      border: 3px solid var(--green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .score-number {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1;
+    }
+
+    .score-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-top: 3px;
+      font-weight: 700;
+    }
+
+    .cert-seal {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .cert-id {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .dossier-item .k {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dossier-item .v {
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 4px;
+      font-size: 16px;
+    }
+
+    .audit-bullet {
+      background: var(--paper);
+      border-left: 4px solid var(--green);
+      padding: 16px 18px;
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #card-scorecard, #card-scorecard * { visibility: visible; }
+      #card-scorecard { position: absolute; left: 0; top: 0; width: 100%; border: none; box-shadow: none; }
+      .actions-row, header, footer { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="intake-head">
+    <a class="brand-link" href="index.html">
+      <span class="brand-mark">AZ Consultants</span>
+      <span class="brand-sub">Riyadh &middot; Saudi Arabia</span>
+    </a>
+    <div class="progress-wrap">
+      <span id="stepCounter" style="font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--muted);">Step 1 of 10</span>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="intake-main">
+
+    <!-- Screen 0: Welcome Screen -->
+    <div class="card active" id="card-0">
+      <div class="step-tag">MANDATE INTAKE &middot; ETIMAD PRE-QUALIFICATION</div>
+      <h1>Senior Engineering Advisory &amp; Tender Scoping</h1>
+      <p class="lead-text">
+        Complete this 90-second project questionnaire to benchmark your tender against current Etimad feed requirements, verify your 30% local content baseline, and receive an instant preliminary viability scorecard.
+      </p>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="nextCard(0)">
+          Begin Scoping &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen 1: First Name -->
+    <div class="card" id="card-1">
+      <div class="step-tag">QUESTION 1 OF 10</div>
+      <h2>Let's start with your first name</h2>
+      <p class="lead-text">Who will our lead engineering partner be addressing?</p>
+      <input type="text" id="q_first_name" placeholder="Type your first name..." autofocus>
+      <div class="error-msg" id="err-1">Please enter your first name.</div>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="handleFirstName()">Continue &rarr;</button>
+        <button class="btn-ghost" onclick="prevCard(1)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 2: Last Name -->
+    <div class="card" id="card-2">
+      <div class="step-tag">QUESTION 2 OF 10</div>
+      <h2>and your last name</h2>
+      <input type="text" id="q_last_name" placeholder="Type your last name...">
+      <div class="error-msg" id="err-2">Please enter your last name.</div>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="handleLastName()">Continue &rarr;</button>
+        <button class="btn-ghost" onclick="prevCard(2)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 3: Business Email -->
+    <div class="card" id="card-3">
+      <div class="step-tag">QUESTION 3 OF 10</div>
+      <h2>Good to have you, <span class="inject-name">Partner</span>! What is your corporate email?</h2>
+      <p class="lead-text">We will dispatch your official written tender dossier and proposal details here.</p>
+      <input type="email" id="q_email" placeholder="name@company.com">
+      <div class="error-msg" id="err-3">Please enter a valid corporate email.</div>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="handleEmail()">Continue &rarr;</button>
+        <button class="btn-ghost" onclick="prevCard(3)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 4: Company Name & Role -->
+    <div class="card" id="card-4">
+      <div class="step-tag">QUESTION 4 OF 10</div>
+      <h2>What is the name of your organization, and your role there?</h2>
+      <p class="lead-text">Company, contracting consortium, or government-facing agency.</p>
+      <input type="text" id="q_company" placeholder="e.g. Al-Bawani, Red Sea Global, Nesma...">
+      <div class="error-msg" id="err-4">Please enter your organization name.</div>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="handleCompany()">Continue &rarr;</button>
+        <button class="btn-ghost" onclick="prevCard(4)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 5: Primary Focus Area -->
+    <div class="card" id="card-5">
+      <div class="step-tag">QUESTION 5 OF 10 &middot; SERVICE SELECTION</div>
+      <h2>Which advisory area best fits your current requirement in KSA?</h2>
+      <div class="choices-grid">
+        <div class="choice-btn" onclick="selectChoice(5, 'Tender Intelligence & Bid Support')">
+          <span class="key-hint">A</span> Tender Intelligence &amp; Bid Support (Etimad feed reading, bid-or-no-bid advisory)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(5, 'Local Content Readiness (LCGPA 30%)')">
+          <span class="key-hint">B</span> Local Content Readiness (LCGPA 30% baseline audit for SAR 10M+ tenders)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(5, 'AI in Facility Management (AI-FM)')">
+          <span class="key-hint">C</span> AI in Facility Management (AI-FM) &amp; Operational Cost Optimization
+        </div>
+        <div class="choice-btn" onclick="selectChoice(5, 'Engineering Advisory & Delivery Supervision')">
+          <span class="key-hint">D</span> Senior Engineering Advisory &amp; On-Site Delivery Supervision
+        </div>
+        <div class="choice-btn" onclick="selectChoice(5, 'Commercial Claims & Dispute Resolution')">
+          <span class="key-hint">E</span> Commercial Claims, Variations &amp; Contract Dispute Resolution
+        </div>
+      </div>
+      <div class="actions-row">
+        <button class="btn-ghost" onclick="prevCard(5)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 6: Capex / Scale -->
+    <div class="card" id="card-6">
+      <div class="step-tag">QUESTION 6 OF 10</div>
+      <h2>What is the approximate scale or Capex of the tender / mandate?</h2>
+      <div class="choices-grid">
+        <div class="choice-btn" onclick="selectChoice(6, 'Under SAR 10 Million')">
+          <span class="key-hint">A</span> Under SAR 10 Million
+        </div>
+        <div class="choice-btn" onclick="selectChoice(6, 'SAR 10M to SAR 50M')">
+          <span class="key-hint">B</span> SAR 10M to SAR 50M (Subject to 30% LCGPA gate)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(6, 'SAR 50M to SAR 250M')">
+          <span class="key-hint">C</span> SAR 50M to SAR 250M
+        </div>
+        <div class="choice-btn" onclick="selectChoice(6, 'Above SAR 250M (Gigaproject)')">
+          <span class="key-hint">D</span> Above SAR 250M (Gigaproject / Public Programme)
+        </div>
+      </div>
+      <div class="actions-row">
+        <button class="btn-ghost" onclick="prevCard(6)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 7: Region -->
+    <div class="card" id="card-7">
+      <div class="step-tag">QUESTION 7 OF 10</div>
+      <h2>Where is the primary project or operating base located?</h2>
+      <div class="choices-grid">
+        <div class="choice-btn" onclick="selectChoice(7, 'Riyadh / Central Region')">
+          <span class="key-hint">A</span> Riyadh / Central Region
+        </div>
+        <div class="choice-btn" onclick="selectChoice(7, 'Jeddah / Western Province')">
+          <span class="key-hint">B</span> Jeddah / Western Province / Holy Cities
+        </div>
+        <div class="choice-btn" onclick="selectChoice(7, 'Eastern Province (Dammam/Khobar/Jubail)')">
+          <span class="key-hint">C</span> Eastern Province (Dammam / Khobar / Jubail)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(7, 'NEOM / Red Sea / Amaala')">
+          <span class="key-hint">D</span> NEOM / Red Sea / Amaala
+        </div>
+        <div class="choice-btn" onclick="selectChoice(7, 'Other KSA / GCC Region')">
+          <span class="key-hint">E</span> Other KSA / GCC Region
+        </div>
+      </div>
+      <div class="actions-row">
+        <button class="btn-ghost" onclick="prevCard(7)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 8: Urgency -->
+    <div class="card" id="card-8">
+      <div class="step-tag">QUESTION 8 OF 10</div>
+      <h2>What is your submission or kickoff timeline?</h2>
+      <div class="choices-grid">
+        <div class="choice-btn" onclick="selectChoice(8, 'Urgent (< 2 Weeks, Live Etimad Deadline)')">
+          <span class="key-hint">A</span> Urgent (&lt; 2 Weeks &mdash; Live Etimad Deadline)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(8, '2 to 4 Weeks')">
+          <span class="key-hint">B</span> 2 to 4 Weeks
+        </div>
+        <div class="choice-btn" onclick="selectChoice(8, '1 to 3 Months (Strategic Preparation)')">
+          <span class="key-hint">C</span> 1 to 3 Months (Strategic Preparation)
+        </div>
+        <div class="choice-btn" onclick="selectChoice(8, 'General Discovery / Capability Briefing')">
+          <span class="key-hint">D</span> General Discovery / Capability Briefing
+        </div>
+      </div>
+      <div class="actions-row">
+        <button class="btn-ghost" onclick="prevCard(8)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 9: Advisory Call -->
+    <div class="card" id="card-9">
+      <div class="step-tag">QUESTION 9 OF 10 &middot; SCOPING CALL</div>
+      <h2>Would you like an initial 20-minute technical scoping call with Engr. Aamir / Lead Partner?</h2>
+      <p class="lead-text">No obligation or sales decks &mdash; direct engineering scope review.</p>
+      <div class="choices-grid">
+        <div class="choice-btn" onclick="handleCallDecision(true)">
+          <span class="key-hint">Y</span> Yes! Fast-track an introductory call with Engr. Aamir.
+        </div>
+        <div class="choice-btn" onclick="handleCallDecision(false)">
+          <span class="key-hint">N</span> No, written assessment via email is sufficient for now.
+        </div>
+      </div>
+      <div class="actions-row">
+        <button class="btn-ghost" onclick="prevCard(9)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 9b: Statement -->
+    <div class="card" id="card-9b">
+      <div class="step-tag">CALL COORDINATION &middot; FAST-TRACK</div>
+      <h2>Excellent &mdash; we will prioritize your call within 1 business day.</h2>
+      <p class="lead-text">
+        Our Riyadh desk scopes every mandate with a written deliverables schedule and transparent market pricing before work begins.
+      </p>
+      <div class="actions-row">
+        <button class="btn-submit" onclick="nextCard('9b', 10)">Proceed to Final Contact &rarr;</button>
+        <button class="btn-ghost" onclick="prevCard('9b', 9)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 10: Phone Number -->
+    <div class="card" id="card-10">
+      <div class="step-tag">QUESTION 10 OF 10 &middot; FINAL VERIFICATION</div>
+      <h2>What is the best phone or WhatsApp number to reach you on?</h2>
+      <p class="lead-text">Saudi mobile (+966 5X XXX XXXX) or direct international format.</p>
+      <input type="tel" id="q_phone" placeholder="+966 5X XXX XXXX">
+      <div class="error-msg" id="err-10">Please enter a valid phone number.</div>
+      <div class="actions-row">
+        <button class="btn-submit" id="submitBtn" onclick="submitInquiry()">
+          Submit &amp; Generate Scorecard &check;
+        </button>
+        <button class="btn-ghost" onclick="prevCard(10, state.wantsCall ? '9b' : 9)">Back</button>
+      </div>
+    </div>
+
+    <!-- Screen 10.5: Animated Submission Tick Celebration -->
+    <div class="card" id="card-submitting" style="text-align: center;">
+      <svg class="checkmark-svg" viewBox="0 0 52 52">
+        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <h2 style="font-size: 32px; color: var(--green-dark);">Mandate Submitted Successfully!</h2>
+      <p class="lead-text" style="margin-top: 10px;">
+        Transmitted directly to Engr. Aamir's private Telegram desk. Generating your custom KSA Tender Viability Scorecard...
+      </p>
+    </div>
+
+    <!-- Screen 11: DYNAMIC TENDER VIABILITY & LCGPA SCORECARD ARTIFACT -->
+    <div class="card" id="card-scorecard">
+      <div style="text-align: center;">
+        <span style="display: inline-block; background: var(--green-tint); color: var(--green-dark); font-family: var(--font-mono); font-size: 13px; padding: 6px 14px; border-radius: 6px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">
+          MANDATE VERIFIED &amp; TRANSMITTED TO ENGR. AAMIR
+        </span>
+        <h2 style="margin-top: 14px; font-size: 38px;">Executive Tender Viability Scorecard</h2>
+        <p class="lead-text" style="margin-bottom: 24px;">
+          Generated exclusively for <strong class="inject-name">Partner</strong> &middot; <span id="res_company">Company</span>
+        </p>
+      </div>
+
+      <!-- Verified Scorecard Box -->
+      <div class="scorecard-box">
+        <div class="score-badge-row">
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="score-circle">
+              <span class="score-number" id="res_score">94%</span>
+              <span class="score-sub">VIABILITY</span>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 20px; color: var(--ink);">High Win-Probability Band</div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 4px;">Etimad Feed Match &middot; Riyadh Advisory Practice</div>
+            </div>
+          </div>
+          <div class="cert-seal">
+            <div>MANDATE REF:</div>
+            <div class="cert-id" id="res_ref">AZ-KSA-2026-9481</div>
+          </div>
+        </div>
+
+        <div class="dossier-grid">
+          <div class="dossier-item">
+            <div class="k">Target Discipline</div>
+            <div class="v" id="res_service">Tender Intelligence &amp; Bid Support</div>
+          </div>
+          <div class="dossier-item">
+            <div class="k">Regional Base</div>
+            <div class="v" id="res_region">Jeddah / Western Province</div>
+          </div>
+          <div class="dossier-item">
+            <div class="k">Capex Scale</div>
+            <div class="v" id="res_capex">Under SAR 10 Million</div>
+          </div>
+          <div class="dossier-item">
+            <div class="k">Timeline</div>
+            <div class="v" id="res_timeline">1 to 3 Months</div>
+          </div>
+        </div>
+
+        <!-- Dynamic KSA Regulatory Insight -->
+        <div class="audit-bullet" id="res_lcgpa_box">
+          <strong>LCGPA 30% Mandate Analysis:</strong> <span id="res_lcgpa">Capex under SAR 10M threshold. Strategic pre-penalty bidding advantage identified.</span>
+        </div>
+
+        <div class="audit-bullet" style="border-left-color: #8a5a12; background: var(--amber-tint);">
+          <strong>Direct Telegram Alert Delivered:</strong> Your complete mandate dossier has been delivered directly to Engr. Aamir's private Telegram bot. A formal written fit proposal is being prepared within 24 hours.
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions-row" style="justify-content: center; flex-wrap: wrap; gap: 16px;">
+        <button class="btn-submit" onclick="window.print()">
+          Print / Save Dossier (PDF) &darr;
+        </button>
+        <a class="btn-ghost" href="index.html">
+          Return to AZ Consultants
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer style="padding: 20px 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between;">
+    <div>AZ Consultants &middot; Riyadh, Kingdom of Saudi Arabia</div>
+    <div>Executive Engineering &middot; Tenders &middot; Delivery</div>
+  </footer>
+
+  <script>
+    const state = {
+      first_name: '',
+      last_name: '',
+      email: '',
+      company: '',
+      service: '',
+      capex: '',
+      region: '',
+      timeline: '',
+      wantsCall: false,
+      phone: ''
+    };
+
+    function updateProgress(step, total = 10) {
+      const pct = Math.min(100, Math.round((step / total) * 100));
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('stepCounter').innerText = `Step ${step} of ${total}`;
+    }
+
+    function showCard(id) {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+      let elementId = String(id);
+      if (!elementId.startsWith('card-')) {
+        elementId = 'card-' + elementId;
+      }
+      const target = document.getElementById(elementId);
+      if (target) {
+        target.classList.add('active');
+        const input = target.querySelector('input');
+        if (input) {
+          setTimeout(() => input.focus(), 60);
+        }
+      }
+    }
+
+    function nextCard(currentId, targetId = null) {
+      const next = targetId !== null ? targetId : Number(currentId) + 1;
+      showCard(next);
+      updateProgress(typeof next === 'number' ? next : 9);
+    }
+
+    function prevCard(currentId, targetId = null) {
+      const prev = targetId !== null ? targetId : Number(currentId) - 1;
+      showCard(prev);
+      updateProgress(typeof prev === 'number' ? prev : 9);
+    }
+
+    function handleFirstName() {
+      const val = document.getElementById('q_first_name').value.trim();
+      if (!val) {
+        document.getElementById('err-1').style.display = 'block';
+        return;
+      }
+      document.getElementById('err-1').style.display = 'none';
+      state.first_name = val;
+      document.querySelectorAll('.inject-name').forEach(el => el.innerText = val);
+      nextCard(1);
+    }
+
+    function handleLastName() {
+      const val = document.getElementById('q_last_name').value.trim();
+      if (!val) {
+        document.getElementById('err-2').style.display = 'block';
+        return;
+      }
+      document.getElementById('err-2').style.display = 'none';
+      state.last_name = val;
+      nextCard(2);
+    }
+
+    function handleEmail() {
+      const val = document.getElementById('q_email').value.trim();
+      if (!val || !val.includes('@') || !val.includes('.')) {
+        document.getElementById('err-3').style.display = 'block';
+        return;
+      }
+      document.getElementById('err-3').style.display = 'none';
+      state.email = val;
+      nextCard(3);
+    }
+
+    function handleCompany() {
+      const val = document.getElementById('q_company').value.trim();
+      if (!val) {
+        document.getElementById('err-4').style.display = 'block';
+        return;
+      }
+      document.getElementById('err-4').style.display = 'none';
+      state.company = val;
+      nextCard(4);
+    }
+
+    function selectChoice(step, value) {
+      if (step === 5) state.service = value;
+      if (step === 6) state.capex = value;
+      if (step === 7) state.region = value;
+      if (step === 8) state.timeline = value;
+      nextCard(step);
+    }
+
+    function handleCallDecision(wantsCall) {
+      state.wantsCall = wantsCall;
+      if (wantsCall) {
+        showCard('9b');
+      } else {
+        showCard(10);
+        updateProgress(10);
+      }
+    }
+
+    async function submitInquiry() {
+      const phoneVal = document.getElementById('q_phone').value.trim();
+      if (!phoneVal || phoneVal.length < 7) {
+        document.getElementById('err-10').style.display = 'block';
+        return;
+      }
+      document.getElementById('err-10').style.display = 'none';
+      state.phone = phoneVal;
+
+      // Show animated submission tick card first
+      showCard('submitting');
+
+      let score = 92;
+      let refId = 'AZ-KSA-2026-' + Math.floor(1000 + Math.random() * 9000);
+      let lcgpaMsg = 'Capex under SAR 10M threshold. Strategic pre-penalty bidding advantage identified.';
+      if (state.capex.includes('10M') || state.capex.includes('50M') || state.capex.includes('250M')) {
+        score = 96;
+        lcgpaMsg = 'Mandatory 30% Local Content gate applies for consultancy tenders of SAR 10M+ from 1 Apr 2027. Certificate preparation recommended.';
+      }
+
+      try {
+        const resp = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(state)
+        });
+        if (resp.ok) {
+          const resData = await resp.json();
+          if (resData.reference) refId = resData.reference;
+          if (resData.score) score = resData.score;
+          if (resData.lcgpa_status) lcgpaMsg = resData.lcgpa_status;
+        }
+      } catch (e) {
+        console.warn('API error caught:', e);
+      }
+
+      // Populate Dynamic Scorecard & Dossier
+      document.getElementById('res_company').innerText = state.company;
+      document.getElementById('res_service').innerText = state.service;
+      document.getElementById('res_region').innerText = state.region;
+      document.getElementById('res_capex').innerText = state.capex;
+      document.getElementById('res_timeline').innerText = state.timeline;
+      document.getElementById('res_score').innerText = score + '%';
+      document.getElementById('res_ref').innerText = refId;
+      document.getElementById('res_lcgpa').innerText = lcgpaMsg;
+
+      // Transition from animated tick celebration to the Scorecard after 1.2s
+      setTimeout(() => {
+        showCard('scorecard');
+        updateProgress(10);
+      }, 1200);
+    }
+
+    // Keyboard support for Enter
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const activeCard = document.querySelector('.card.active');
+        if (!activeCard) return;
+        const id = activeCard.id.replace('card-', '');
+        if (id === '0') nextCard(0);
+        else if (id === '1') handleFirstName();
+        else if (id === '2') handleLastName();
+        else if (id === '3') handleEmail();
+        else if (id === '4') handleCompany();
+        else if (id === '9b') nextCard('9b', 10);
+        else if (id === '10') submitInquiry();
+      }
+    });
+  </script>
+</body>
+</html>
